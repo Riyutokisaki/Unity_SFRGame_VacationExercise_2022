@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 1998376213}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1694,12 +1694,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: {fileID: 1247774864}
   x: 0
-  y: 0
-  speed: 1
+  y: 10
+  speed: -0.5
   rollers: 5
-  distance: 0
-  minDis: 20
-  maxDis: 100
+  distance: 1
+  minDis: 10
+  maxDis: 50
 --- !u!1001 &2010522541
 PrefabInstance:
   m_ObjectHideFlags: 0
