@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 /// <summary>
-/// 旋轉鏡頭
+/// 滑鼠旋轉鏡頭
 /// </summary>
 public class CameraController : MonoBehaviour
 {
@@ -30,7 +28,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-       // Mouse();
+        //Mouse();
         Mobile();
     }
     #region 方法
@@ -72,29 +70,34 @@ public class CameraController : MonoBehaviour
         if (Input.touchCount > 0)//觸控螢幕>1
         {
             Touch touch = Input.GetTouch(0);//存取觸碰位置
-            //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);//將觸碰位置定義為世界座標
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);//將觸碰位置定義為世界座標
             print("觸碰:" + touch.position);
-          
+            print("世界座標轉換:" + touchPosition);
+
             if (touch.phase == TouchPhase.Moved)//當觸碰開始移動
             {
+                x += touch.position.x * speed * Time.deltaTime;
+                //print("Mouse X:" + Input.GetAxis("Mouse X"));
+                y -= touch.position.y * speed * Time.deltaTime;
                 #region 保證X在360內
-                if (touch.position.x > 360) x -= 360;
-                else if (touch.position.x < 0) x += 360;
-                #endregion
-            #region 運算攝影機座標&旋轉
-                rotationEuler = Quaternion.Euler(transform.position.y+touch.position.y, transform.position.x+touch.position.x, 0);
+                if (touchPosition.x > 360) x -= 360;
+                else if (touchPosition.x < 0) x += 360;
+                #endregion 
+                #region 運算攝影機座標&旋轉
+                rotationEuler = Quaternion.Euler(y, x, 0);
                 camerPosition = rotationEuler * new Vector3(0, 0, -distance) + stage.position;
                 //應用
                 transform.rotation = rotationEuler;
                 transform.position = camerPosition;
-                #endregion 
+                #endregion
             }
-            if (touch.phase == TouchPhase.Ended)//當手指離開螢幕
+            if (touch.phase == TouchPhase.Stationary)
             {
-                
+                x = 0;
+                y = 10;
             }
-            
         }
+
         #region 滑鼠滾輪數值
         distance -= Input.GetAxis("Mouse ScrollWheel") * rollers * 100 * Time.deltaTime;
         //print("Mouse ScrollWheel:" + Input.GetAxis("Mouse ScrollWheel"));
@@ -102,8 +105,7 @@ public class CameraController : MonoBehaviour
                                                          //Mathf.Clamp(數值,最小值,最大值)返回最大與最小間的值
         #endregion
        
-        
-        
     }
+    
     #endregion
 }

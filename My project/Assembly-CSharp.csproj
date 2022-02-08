@@ -65,6 +65,7 @@
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
+    <Compile Include="Assets\Script\CameraMobile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\StarterAssets\Environment\Shaders\Built-in_RP\Triplanar.shader" />
