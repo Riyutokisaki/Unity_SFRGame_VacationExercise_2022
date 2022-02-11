@@ -24,12 +24,15 @@ public class CameraController : MonoBehaviour
 
     private Quaternion rotationEuler;//旋轉角度(四元數),傳入值轉換為角度(即為Transform的Rotation)
     private Vector3 camerPosition;//攝影機位置
+
+    public Vector2 pos;
     #endregion
 
     private void Update()
     {
         //Mouse();
-        Mobile();
+        //Mobile();
+        text();
     }
     #region 方法
     private void Mouse()
@@ -106,6 +109,20 @@ public class CameraController : MonoBehaviour
         #endregion
        
     }
-    
+    private void text()
+    {
+        if(Input.touchCount ==1)
+        {
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
+            if (Input.touches[0].phase==TouchPhase.Moved)
+            {
+                print("移動" + Input.touches[0].position);
+                print("世界移動" + touchPosition);
+                x = Input.GetAxis("Mouse X");
+                print("水平移動" + x);
+            }
+
+        }
+    }
     #endregion
 }
