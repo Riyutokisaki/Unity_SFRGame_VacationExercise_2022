@@ -31,8 +31,8 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         //Mouse();
-        //Mobile();
-        text();
+        Mobile();
+        //text();
     }
     #region ¤èªk
     private void Mouse()
