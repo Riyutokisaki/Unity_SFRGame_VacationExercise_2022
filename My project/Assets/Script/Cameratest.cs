@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// Äá¼v¾÷¼Ò¦¡¤Á´«3V
+/// </summary>
 
 public class Cameratest : MonoBehaviour
 {

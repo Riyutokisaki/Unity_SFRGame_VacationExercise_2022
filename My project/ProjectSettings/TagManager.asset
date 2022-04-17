@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - area
   - animal
+  - obstacle
   layers:
   - Default
   - TransparentFX
