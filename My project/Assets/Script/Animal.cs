@@ -3,6 +3,7 @@ using UnityEngine.AI;
 /// <summary>
 /// 動物行動
 /// 20220417 添加AI行動
+/// 20220418 技能使用(改為增加減少)、生物移動
 /// </summary>
 
 public class Animal : MonoBehaviour
@@ -16,10 +17,10 @@ public class Animal : MonoBehaviour
     public NavMeshAgent agent;
     [Header("預設移動位置")]
     public GameObject terget;
-    private int patrol=0;
-    public Vector3[] patrolPoint;
-    public int coldTime = 20;
-    private int cold;
+    private bool patrol=false;
+    public Vector3[] patrolPoint;//行走位置點
+    public int coldTime = 20;//設定冷卻時間
+    //private int cold;//實際冷卻時間
     #endregion
     private void Start()
     {
@@ -27,46 +28,40 @@ public class Animal : MonoBehaviour
         AN = GetComponent<Animation>();//取得動畫控制
         agent = GetComponent<NavMeshAgent>();//取得AI判定
         patrolPoint[0] = this.transform.position;
-        cold = coldTime;
+        agent.SetDestination(patrolPoint[1]);
+        //cold = 0;
     }
-    private void FixedUpdate()
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (cold == coldTime)
+        print("碰到" + other);
+        if (other.tag == "Finish")
         {
-            DefaultMove();
-            cold = 0;
-        }
-        else cold++;
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
+            if (patrol)
+            {
+                agent.SetDestination(patrolPoint[1]);
+                patrol = false;
+            }
+            else
+            { 
+                agent.SetDestination(patrolPoint[2]);
+                patrol = true;
+
+            }
         
+        }
     }
 
     #region 方法
     //技能使用
     public void SkillUse(float get) 
     {
-        agent.speed = get;
+        agent.speed += get;//將AI移動速度改為GET
     }
     //位置移動
-    private void DefaultMove()
-    {
 
-        for (patrol = 0; patrol < 2; patrol++)
-        {
 
-            agent.SetDestination(patrolPoint[patrol]);
-            
-            print("到了點" + patrol);
-        }
-        if (patrol == 2)
-        {
-            agent.SetDestination(patrolPoint[patrol]);
-            print("到了點" + patrol);
-            patrol = 0;
-        }
-        //讓AI到指定位置
-    }
+   
     #endregion
+    
 }
