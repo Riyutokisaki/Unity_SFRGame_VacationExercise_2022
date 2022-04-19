@@ -4,6 +4,7 @@ using UnityEngine.AI;
 /// 動物行動
 /// 20220417 添加AI行動
 /// 20220418 技能使用(改為增加減少)、生物移動
+/// 20220420 任務判讀
 /// </summary>
 
 public class Animal : MonoBehaviour
@@ -15,12 +16,15 @@ public class Animal : MonoBehaviour
     public Animation AN;
     [Header("AI")]
     public NavMeshAgent agent;
+    public float speed;
     [Header("預設移動位置")]
     public GameObject terget;
     private bool patrol=false;
     public Vector3[] patrolPoint;//行走位置點
-    public int coldTime = 20;//設定冷卻時間
-    //private int cold;//實際冷卻時間
+    [Header("任務解決")]
+    public bool solving ;
+    [Header("粒子效果")]
+    public ParticleSystem psSolving;
     #endregion
     private void Start()
     {
@@ -30,12 +34,20 @@ public class Animal : MonoBehaviour
         patrolPoint[0] = this.transform.position;
         agent.SetDestination(patrolPoint[1]);
         //cold = 0;
+        solving = false;
+    }
+    private void Update()
+    {
+        //speed = GetComponent<NavMeshAgent>().speed;//取得速度
+        if(solving)TaskSolving();//任務完成
+        agent.speed=speed;//設置速度
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        print("碰到" + other);
-        if (other.tag == "Finish")
+        //預設行動
+        //print("碰到" + other);
+        if (other.tag == "Finish"&& !solving)
         {
             if (patrol)
             {
@@ -46,9 +58,7 @@ public class Animal : MonoBehaviour
             { 
                 agent.SetDestination(patrolPoint[2]);
                 patrol = true;
-
             }
-        
         }
     }
 
@@ -56,12 +66,18 @@ public class Animal : MonoBehaviour
     //技能使用
     public void SkillUse(float get) 
     {
-        agent.speed += get;//將AI移動速度改為GET
+        speed += get;
+        agent.speed = speed;
+        //將AI移動速度改為GET
     }
-    //位置移動
 
+    public void TaskSolving()
+    {
+        agent.SetDestination(patrolPoint[3]);//移動到終點
+        psSolving.Play();//完成顯示
+        if(transform.position==patrolPoint[3])speed = 0;//到達停止
+    }
 
-   
     #endregion
-    
+
 }

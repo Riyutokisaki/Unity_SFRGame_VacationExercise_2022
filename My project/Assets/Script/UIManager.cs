@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         if (skillOpen)
         {
         //顯示位置在點擊物件位置
-            uiUse.transform.position = Camera.main.WorldToScreenPoint(touchObject.position+onObject);
+            //uiUse.transform.position = Camera.main.WorldToScreenPoint(touchObject.position+onObject);
             //當冷卻時間到 刪除不使用的SKILLUI
             if (cold == coldTime)
             {
