@@ -25,16 +25,17 @@ public class Animal : MonoBehaviour
     public bool solving ;
     [Header("粒子效果")]
     public ParticleSystem psSolving;
+    
     #endregion
     private void Start()
     {
         RB = GetComponent<Rigidbody>();//取得剛體
         AN = GetComponent<Animation>();//取得動畫控制
         agent = GetComponent<NavMeshAgent>();//取得AI判定
-        patrolPoint[0] = this.transform.position;
-        agent.SetDestination(patrolPoint[1]);
+        agent.SetDestination(patrolPoint[1]);//使用AI移動位置
+        patrolPoint[0] = this.transform.position;//取得目前位置
         //cold = 0;
-        solving = false;
+        solving = false;//任務判定重製
     }
     private void Update()
     {

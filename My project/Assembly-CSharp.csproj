@@ -66,13 +66,14 @@
     <Compile Include="Assets\Script\UIManager.cs" />
     <Compile Include="Assets\Script\ISelectionResponse.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
+    <Compile Include="Assets\Script\TaskList.cs" />
     <Compile Include="Assets\Script\TouchS.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Script\Not working\CameraController.cs" />
     <Compile Include="Assets\Script\Not working\CameraMobile.cs" />
+    <Compile Include="Assets\Script\TreeVariation.cs" />
     <Compile Include="Assets\Script\SkillButton.cs" />
-    <Compile Include="Assets\Script\TaskList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\StarterAssets\Environment\Shaders\Built-in_RP\Triplanar.shader" />
