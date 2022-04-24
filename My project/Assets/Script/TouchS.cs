@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;////Array.IndexOf使用
 /// <summary>
 /// 觸碰判定系統
 /// 20220415 可運作、但還沒完善 詳情https://www.youtube.com/watch?v=QDldZWvNK_E
@@ -10,7 +11,7 @@ public class TouchS : MonoBehaviour
 {
     #region 欄位
     [Header("能觸碰物件TAG")]
-    public string draggingTag;
+    public string[] draggingTag;
     [Header("攝影機")]
     public Camera cam;
     [Header("選擇_材質替換")]
@@ -69,13 +70,13 @@ public class TouchS : MonoBehaviour
                 RaycastHit hit;
                 Ray ray = cam.ScreenPointToRay(pos);
                 _salaction = null;
-                //如果RAY碰到的物件TAG為欄位名稱
-                if (Physics.Raycast(ray, out hit) && hit.collider.tag == draggingTag)
+                //if (Physics.Raycast(ray, out hit)) print(Array.IndexOf(draggingTag, hit.collider.tag));//檢驗觸碰用20220423
+                if (Physics.Raycast(ray, out hit) && Array.IndexOf(draggingTag, hit.collider.tag)>-1)//Array.IndexOf(陣列,要找的值) 如果有就回傳1，沒有就回傳-1(20220423)，如果RAY碰到的物件TAG為欄位名稱||欄位名稱符合內容
                 {
                     //取得碰到位置的物件
                     var selection = hit.transform;
                     //得到那個物件的材質位置
-                    //var selectionRenderer = selection.GetComponent<Renderer>();
+                    orimaterial = selection.GetComponent<Renderer>().material;
                     //print("觸碰到物件");
                     //orimaterial = selectionRenderer.material;
 

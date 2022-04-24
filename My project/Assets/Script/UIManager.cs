@@ -27,8 +27,12 @@ public class UIManager : MonoBehaviour
         //顯示氣泡框
         if (skillOpen)
         {
+            if (touchObject == null)
+            {
+                Destroy(GameObject.Find("skill UI(Clone)"));
+            }
         //顯示位置在點擊物件位置
-            uiUse.transform.position = Camera.main.WorldToScreenPoint(touchObject.position+onObject);
+            //uiUse.transform.position = Camera.main.WorldToScreenPoint(touchObject.position+onObject);
             //當冷卻時間到 刪除不使用的SKILLUI
             if (cold == coldTime)
             {
@@ -51,6 +55,7 @@ public class UIManager : MonoBehaviour
         //BUG 畫面中心會多出現一個
         uiUse = Instantiate(skill, FindObjectOfType<Canvas>().transform).GetComponent<Image>();//實例化
         cold = 0;//計時用來清除
+       
     }
     
     #endregion
