@@ -20,7 +20,7 @@ public class SkillButton : MonoBehaviour
     private void Awake()
     {
         //喚醒時取得UI控制器與選擇物件
-        skillOpen = GameObject.Find("UI").GetComponent<UIManager>();
+        skillOpen = GameObject.Find("System").GetComponent<UIManager>();
         Target = skillOpen.touchObject;
        
     }

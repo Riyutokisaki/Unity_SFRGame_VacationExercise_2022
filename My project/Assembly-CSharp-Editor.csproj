@@ -53,15 +53,15 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\RemoveUnusedMaterialProperties.cs" />
     <Compile Include="Assets\StarterAssets\Editor\ScriptingDefineUtils.cs" />
     <Compile Include="Assets\StarterAssets\Editor\ThirdPersonStarterAssetsDeployMenu.cs" />
+    <Compile Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\CopyMaterialParameter.cs" />
     <Compile Include="Assets\StarterAssets\Editor\StarterAssetsDeployMenu.cs" />
     <Compile Include="Assets\StarterAssets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
     <Compile Include="Assets\StarterAssets\Editor\PackageChecker\PackageChecker.cs" />
-    <Compile Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\CopyMaterialParameter.cs" />
     <Compile Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\UTS2GUI.cs" />
     <Compile Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\RemoveUnusedShaderKeywordsFromUTS2Material.cs" />
-    <Compile Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Editor\RemoveUnusedMaterialProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\StarterAssets\Editor\PackageChecker\PackageImportList.txt" />

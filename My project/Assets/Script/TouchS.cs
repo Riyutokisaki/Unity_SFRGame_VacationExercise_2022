@@ -5,6 +5,7 @@ using System;////Array.IndexOf使用
 /// 20220415 可運作、但還沒完善 詳情https://www.youtube.com/watch?v=QDldZWvNK_E
 /// 選擇明顯顯示 搭配C#為:hightlightSelectionResponse、ISelectionResponse
 /// 20220416跳出UI 搭配C#為UIManager 
+/// 20220429地面選擇
 /// </summary>
 
 public class TouchS : MonoBehaviour
@@ -22,11 +23,14 @@ public class TouchS : MonoBehaviour
     public Transform _salaction;
     //UI召喚
     private UIManager skillUI;
+    private GroundJudgment ground;
     #endregion
     private void Start()
     {
-        skillUI = GameObject.Find("UI").GetComponent<UIManager>();//先從UI控制中取得腳本
+        skillUI = GameObject.Find("System").GetComponent<UIManager>();//先從UI控制中取得腳本
+        ground= GameObject.Find("System").GetComponent<GroundJudgment>();
     }
+
     void FixedUpdate()
     {
         #region 材質還原
@@ -40,9 +44,9 @@ public class TouchS : MonoBehaviour
 
         }
         #endregion
-        #region 觸碰
-        RayTouch();
-        #endregion
+        
+        RayTouch();//觸碰
+        
         #region 觸碰物材質轉換
         if (_salaction != null)
         {
@@ -55,7 +59,7 @@ public class TouchS : MonoBehaviour
         }
         #endregion
     }
-    private void RayTouch()
+    private void RayTouch()//觸碰
     {
         //若是觸控點=1
         if (Input.touchCount == 1)
@@ -87,8 +91,31 @@ public class TouchS : MonoBehaviour
                     skillUI.SkillOn(selection);
                     _salaction = selection;
                 }
-            }
+                if (Physics.Raycast(ray, out hit) && hit.collider.tag == "area"&& !skillUI.skillOpen)//技能UI不是開的才能換地板
+                {
+                    var selection = hit.transform;
+                    
+                    orimaterial = selection.GetComponent<Renderer>().material;
 
+                    _salaction = selection;
+
+                }
+            }
+            if (touch.phase == TouchPhase.Ended)//結束觸碰將地板恢復
+            {
+                RaycastHit hit;
+                Ray ray = cam.ScreenPointToRay(pos);
+                if (Physics.Raycast(ray, out hit) && hit.collider.tag == "area")
+                {
+                    var selectionRenderer = _salaction.GetComponent<Renderer>();
+                    if (selectionRenderer != null)
+                    {
+                        selectionRenderer.material = orimaterial;
+                    }
+
+                }
+                _salaction = null;
+            }    
         }
     }
 }

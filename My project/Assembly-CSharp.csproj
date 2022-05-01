@@ -74,8 +74,8 @@
     <Compile Include="Assets\Script\Not working\CameraMobile.cs" />
     <Compile Include="Assets\Script\TreeVariation.cs" />
     <Compile Include="Assets\Script\SkillButton.cs" />
-    <Compile Include="Assets\Elf\Script\Elf_Manager.cs" />
-    <Compile Include="Assets\Elf\Script\Manager.cs" />
+    <Compile Include="Assets\Script\GroundJudgment.cs" />
+    <Compile Include="Assets\Script\area.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Toon_DoubleShadeWithFeather_Mobile_TransClipping_StencilMask.shader" />
