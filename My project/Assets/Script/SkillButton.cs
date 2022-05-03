@@ -38,7 +38,7 @@ public class SkillButton : MonoBehaviour
            var tree = Target.GetComponent<TreeVariation>();//如果碰到的東西TAG為樹，取得動物腳本
             tree.SkillUse(speed);//呼叫樹改變速度的方法
         }
-        print("使用技能" + speed);
+        //print("使用技能" + speed);
         skillOpen.skillOpen = false;//關閉UI控制中顯示開關
         Destroy(GameObject.Find("skill UI(Clone)"));//刪除SkillUI
     }

@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
             if (touchObject == null)
             {
                 Destroy(GameObject.Find("skill UI(Clone)"));
+                skillOpen = false;
             }
         //顯示位置在點擊物件位置
             //uiUse.transform.position = Camera.main.WorldToScreenPoint(touchObject.position+onObject);
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
             {
                 Destroy(GameObject.Find("skill UI(Clone)"));
                 print("刪除UI");
+                skillOpen = false;
                 
             }
             else cold++;

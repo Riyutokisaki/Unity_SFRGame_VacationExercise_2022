@@ -26,10 +26,11 @@ public class area : MonoBehaviour
     {
         haveObstacle = false;//每幀檢測前先關閉
 
-        Collider hit = Physics.OverlapBox(transform.position + detectionHight, detectionRange/2, Quaternion.Euler(0, 0, 0))[0];//(中心點，大小，旋轉，圖層碼)
-        if(hit)//若內部有東西
+        Collider[] hit = Physics.OverlapBox(transform.position + detectionHight, detectionRange/2, Quaternion.Euler(0, 0, 0),6);//(中心點，大小，旋轉，圖層碼)
+        int? hitHave = hit?.Length;
+        if(hitHave!=null)//若內部有東西
         {
-           // print(hit[0].name);
+            //print(hit[0].name + "碰到" + transform.name);
             haveObstacle = true;//有障礙物開啟
             hit = null;//刪除內部物品
 

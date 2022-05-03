@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// 地面物品判定20220429
@@ -10,12 +8,15 @@ public class GroundJudgment : MonoBehaviour
 {
 
     #region 欄位
-
+    public Transform touchObject;
+    [Header("主角")]
+    public Transform rem;
     #endregion
     public void OnGround(Transform selection)
     {
-        var onarea=selection.GetComponent <area>().haveObstacle;
-        if (onarea)
+        touchObject = selection;
+        
+        if (touchObject.GetComponent<area>().haveObstacle)
         {
             print("無法通過");
         }

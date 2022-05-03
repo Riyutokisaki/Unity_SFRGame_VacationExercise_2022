@@ -59,6 +59,7 @@
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
+    <Compile Include="Assets\Script\GroundJudgment.cs" />
     <Compile Include="Assets\Script\Cameratest.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\StarterAssets\TutorialInfo\Scripts\Readme.cs" />
@@ -72,10 +73,9 @@
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Script\Not working\CameraController.cs" />
     <Compile Include="Assets\Script\Not working\CameraMobile.cs" />
+    <Compile Include="Assets\Script\area.cs" />
     <Compile Include="Assets\Script\TreeVariation.cs" />
     <Compile Include="Assets\Script\SkillButton.cs" />
-    <Compile Include="Assets\Script\GroundJudgment.cs" />
-    <Compile Include="Assets\Script\area.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Toon_DoubleShadeWithFeather_Mobile_TransClipping_StencilMask.shader" />
