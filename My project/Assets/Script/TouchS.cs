@@ -95,7 +95,7 @@ public class TouchS : MonoBehaviour
                 if (Physics.Raycast(ray, out hit) && hit.collider.tag == "area"&& !skillUI.skillOpen)//技能UI不是開的才能換地板
                 {
                     var selection = hit.transform;
-                    print(selection.name);
+                    //print(selection.name);
                     orimaterial = selection.GetComponent<Renderer>().material;
                     ground.OnGround(selection);
                     _salaction = selection;
@@ -103,22 +103,9 @@ public class TouchS : MonoBehaviour
                 }
                 #endregion
             }
-            if (touch.phase == TouchPhase.Ended)//結束觸碰將地板恢復
-            {
-                RaycastHit hit;
-                Ray ray = cam.ScreenPointToRay(pos);
-                if (Physics.Raycast(ray, out hit) && hit.collider.tag == "area")
-                {
-                    var selectionRenderer = _salaction.GetComponent<Renderer>().material;
-                    if (selectionRenderer != null)
-                    {
-                        selectionRenderer = orimaterial;
-                    }
-
-                }
-                //_salaction = null;
+            
             }    
         }
     }
-}
+
 

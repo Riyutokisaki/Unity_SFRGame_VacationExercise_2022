@@ -15,14 +15,14 @@ public class GroundJudgment : MonoBehaviour
     public void OnGround(Transform selection)
     {
         touchObject = selection;
-        
+        PlayerCharacter player = GameObject.Find("主角").GetComponent<PlayerCharacter>();
         if (touchObject.GetComponent<area>().haveObstacle)
         {
             print("無法通過");
         }
         else
         {
-            //呼叫主角移動
+            player.Move(selection);//呼叫主角移動
         }
     }
 }

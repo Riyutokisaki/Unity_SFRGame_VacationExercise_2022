@@ -79,6 +79,7 @@
     <Compile Include="Assets\Script\area.cs" />
     <Compile Include="Assets\Script\TreeVariation.cs" />
     <Compile Include="Assets\Script\SkillButton.cs" />
+    <Compile Include="Assets\Script\PlayerCharacter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SD Unity-Chan Haon Custom\Shader\Unity-chan Toon Shader Ver 2.0.6\Toon_DoubleShadeWithFeather_Mobile_TransClipping_StencilMask.shader" />
